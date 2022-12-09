@@ -1,6 +1,6 @@
 --Earth Fake Macro Leaked
 local name = 500
-local keybind = "G"
+local keybind = "t"
 
 --Script
 
