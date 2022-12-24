@@ -1,0 +1,35 @@
+Settings = {
+    Keybind = "Z",
+    Arch
+}
+
+local Atlas = loadstring(game:HttpGet("https://raw.githubusercontent.com/yoshieisgay123/yuh/main/atlas"))()
+local UI = Atlas.new({Name = "Arch";Color = Color3.fromRGB(255,0,0);Bind = "RightAlt";}) for i,v in pairs(game:GetService("CoreGui").AtlasZomby:GetChildren()) do if v.Name ~= 'Notifications' then v:Destroy();end; end
+local plr = game:GetService('Players').LocalPlayer
+local chr = plr.Character
+local hrp = chr:FindFirstChild('HumanoidRootPart')
+game:GetService('UserInputService').InputBegan:Connect(function(key)
+    if key.UserInputType == Enum.UserInputType.MouseButton3 then
+        Settings.Arch = not Settings.Arch
+        UI:Notify({Title = "Arch Anti-Lock";Content = ("Anti-Lock Status: " .. tostring(Settings.Arch));})
+    end
+end)
+getgenv().Enableddd = true 
+
+local AngleAA = {
+    X = 100000000000,
+    Y = -2,
+    Z = 100000000000
+}
+
+
+game:GetService("RunService").heartbeat:Connect(function()
+    if Settings.Arch then 
+    local vel = game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity
+    game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity =      Vector3.new(
+    AngleAA.X,AngleAA.Y,AngleAA.Z
+    ) 
+    game:GetService("RunService").RenderStepped:Wait()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = vel
+    end 
+end)
